@@ -1,0 +1,12 @@
+.select-wrapper {
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid #090979 !important;
+}
+
+.select-wrapper:focus {
+    border-color: unset;
+    outline: none;
+}
+
+.label {}

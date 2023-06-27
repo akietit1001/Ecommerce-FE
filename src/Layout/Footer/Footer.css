@@ -1,0 +1,22 @@
+.wrapper-footer {
+    color: white;
+    padding: 0 15px;
+    background: #000000;
+    background: -webkit-repeating-linear-gradient( to right, #434343, #000000);
+    background: linear-gradient(to right, #434343, #000000);
+}
+
+.wrapper-footer a {
+    color: #fff;
+    margin: 0 10px;
+}
+
+.wrapper-footer a:hover {
+    color: #ffefba;
+    border-bottom: solid 1px #ffefba;
+}
+
+.wrapper-footer .active {
+    color: #ffefba;
+    border-bottom: solid 1px #ffefba;
+}

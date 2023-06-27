@@ -1,0 +1,32 @@
+.login-btn {
+    text-align: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.title {
+    margin-bottom: 20px;
+}
+
+.forgot-password {
+    cursor: pointer;
+    color: rgb(17, 107, 143);
+    margin: 15px 0;
+}
+
+.forgot-password:hover {
+    color: rgba(17, 107, 143, 0.877)
+}
+
+.havent-account {
+    margin: 15px 0;
+}
+
+.link-to-sign-up {
+    color: rgb(17, 107, 143);
+    margin: 0 5px;
+}
+
+.link-to-sign-up:hover {
+    color: rgba(17, 107, 143, 0.877)
+}

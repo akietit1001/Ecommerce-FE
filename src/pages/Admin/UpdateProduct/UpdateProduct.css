@@ -1,0 +1,10 @@
+.btn-action {
+    display: flex;
+}
+
+.btn-delete-product {
+    background-color: #DC281E !important;
+    background-image: none;
+    color: #ccc;
+    margin-left: 20px;
+}

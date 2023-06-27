@@ -1,0 +1,13 @@
+.list-group-item:hover {
+    background-color: #ccc;
+}
+
+.list-group-item.active {
+    color: black;
+    background-color: #3a7bd5;
+    border: none;
+}
+
+.list-group {
+    border-radius: 0;
+}
