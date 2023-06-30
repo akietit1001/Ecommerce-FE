@@ -11,7 +11,7 @@
 
 .text-field {
     width: 100%;
-    height: 40px;
+    height: unset !important;
     padding: 8px;
     border: none;
 }

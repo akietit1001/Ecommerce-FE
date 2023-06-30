@@ -178,6 +178,7 @@ const UpdateProduct = () => {
                                 placeholder='Write a description' 
                                 className='form-control'
                                 onChange={(e) => setDescription(e.target.value)}
+                                rows={'4'}
                                 />
                             </div>
                             <div className="mb-3">

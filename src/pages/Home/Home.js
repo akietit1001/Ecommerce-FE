@@ -1,5 +1,6 @@
 import React,{useState, useEffect} from 'react';
 import './Home.css'
+import { useNavigate } from 'react-router-dom';
 import Layout from '../../Layout/Layout';
 import { productApi } from '../../http/Product';
 import { categoriesApi } from '../../http/Category';
@@ -16,6 +17,8 @@ const Home = () => {
     const [total, setTotal] = useState(0)
     const [page, setPage] = useState(1)
     const [loading, setLoading] = useState(false)
+
+    const navigate = useNavigate()
 
     //get all category
     const getAllCategory = async () => {
@@ -157,7 +160,7 @@ const Home = () => {
                                            ${product.price}
                                         </p>
                                         <div className='btn-group'>
-                                            <Button className='btn-detail'>More Details</Button>
+                                            <Button className='btn-detail' onClick={() => navigate(`/product/${product.slug}`)}>More Details</Button>
                                             <Button className='btn-add-to-cart ms-1'>ADD TO CART</Button>
                                         </div>
                                     </div>

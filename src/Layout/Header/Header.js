@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import '../Header/Header.css'
 import { useAuth } from '../../context/auth';
+import SearchInput from './../../components/SearchInput/SearchInput';
 
 const Header = () => {
     const [auth, setAuth] = useAuth()
@@ -18,7 +19,8 @@ const Header = () => {
         <nav className='wrapper-nav'>
             <div className='inner-nav'>
                 <Link className='nav-brand' to='/'>Brand</Link>
-                <ul className='navbar-nav'>
+                <ul className='navbar-nav ms-auto mb-2 mb-lg-0'>
+                    <SearchInput />
                     <li className='nav-item'>
                             <NavLink className='nav-link' to='/'>Home</NavLink>
                     </li>
@@ -26,14 +28,17 @@ const Header = () => {
                             <NavLink className='nav-link' to='/category'>Category</NavLink>
                     </li>
                     {
-                        !auth.user ? (<>
+                        !auth?.user ? (
+                        <>
                         <li className='nav-item'>
                                 <NavLink className='nav-link' to='/login'>Login</NavLink>
                         </li>
                         <li className='nav-item'>
                                 <NavLink className='nav-link' to='/register'>Register</NavLink>
                         </li>
-                        </>) : (<>
+                        </>
+                        ) : (
+                        <>
                             <li className='nav-link dropdown-toggle'
                             href='#'
                             role='button'

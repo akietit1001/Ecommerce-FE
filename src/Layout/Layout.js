@@ -17,7 +17,7 @@ const Layout = ({children, title, description, keywords, author}) => {
             </Helmet>
             <Header />
             <main className='main-wrapper' style={{minHeight: '75vh', margin: '0 15px'}}>
-                <Toaster />
+                <Toaster position="top-center" reverseOrder={false}/>
                 {children}
             </main>
             <Footer />
