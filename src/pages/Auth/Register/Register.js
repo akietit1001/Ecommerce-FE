@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import './Register.css'
+import '../../../styles/AuthStyle.css'
 import Layout from '../../../Layout/Layout';
 import {toast} from 'react-hot-toast'
 import { NavLink, useNavigate } from 'react-router-dom'
@@ -40,7 +41,7 @@ const Register = () => {
       };
     return (
         <Layout title={'Sign Up'}>
-            <div className="form-container" style={{ minHeight: "90vh" }}>
+            <div className="form-container" style={{ minHeight: "90vh", marginTop: '60px' }}>
                 <form onSubmit={handleSubmit}>
                 <h4 className="title">REGISTER</h4>
                 <div className="mb-3">

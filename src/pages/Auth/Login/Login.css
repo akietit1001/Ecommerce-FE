@@ -30,3 +30,9 @@
 .link-to-sign-up:hover {
     color: rgba(17, 107, 143, 0.877)
 }
+
+.form-container form {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 20px;
+    background-color: #fff;
+}

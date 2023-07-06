@@ -1,0 +1,21 @@
+.form-container {
+    margin-top: 70px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh;
+    flex-direction: column;
+}
+
+.form-container form {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.form-container form .label {
+    text-align: left;
+    margin-bottom: 15px;
+    font-weight: bold;
+}

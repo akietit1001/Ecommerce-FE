@@ -72,7 +72,7 @@ const CreateCategory = () => {
     return (
         <Layout title={'Create Category'}>
             <div className='container-fluid m-3 p-3'>
-                <div className='row'>
+                <div className='row dashboard'>
                     <div className='col-md-3'>
                         <AdminMenu />
                     </div>
@@ -91,22 +91,20 @@ const CreateCategory = () => {
                                 </thead>
                                 <tbody>
                                     {categories?.map((category)=> (
-                                        <>
-                                            <tr>
-                                                <td key={category._id}>{category.name}</td>
-                                                <td><Button className='edit' onClick={
-                                                    ()=>{
-                                                        setVisible(true); 
-                                                        setUpdatedName(category.name)
-                                                        setSelected(category._id)
-                                                        }
-                                                    }>Edit</Button>
-                                                <Button className='delete' onClick={()=>{
-                                                    handleDelete(category._id)
-                                                }} >Delete</Button></td>
-                                            </tr>
-                                        </>
-                                        ))}
+                                        <tr key={category._id}>
+                                            <td>{category.name}</td>
+                                            <td><Button className='edit' onClick={
+                                                ()=>{
+                                                    setVisible(true); 
+                                                    setUpdatedName(category.name)
+                                                    setSelected(category._id)
+                                                    }
+                                                }>Edit</Button>
+                                            <Button className='delete' onClick={()=>{
+                                                handleDelete(category._id)
+                                            }} >Delete</Button></td>
+                                        </tr>
+                                    ))}
                                 </tbody>
                             </table>
                         </div>

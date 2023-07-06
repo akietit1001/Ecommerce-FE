@@ -11,6 +11,7 @@ import { productApi } from './../../../http/Product';
 import TextArea from '../../../components/Textarea/TextArea';
 import Button from './../../../components/Button/Button';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const { Option } = Select
 
@@ -29,21 +30,23 @@ const CreateProduct = () => {
     // Handle form create product
     const handleCreate = async (e) => {
         e.preventDefault()
-        const productData = new FormData()
-        productData.append("name", name)
-        productData.append("description", description)
-        productData.append("price", price)
-        productData.append("quantity", quantity)
-        productData.append("photo", photo)
-        productData.append("category", category)
-        const res = await productApi.createProduct('/api/v1/product/create-product', productData)
-        getAllcategories()
-        if (res?.success) {
+        const productData = new FormData();
+        productData.append("name", name);
+        productData.append("description", description);
+        productData.append("price", price);
+        productData.append("quantity", quantity);
+        productData.append("photo", photo);
+        productData.append("category", category);
+        const data = productApi.createProduct(
+            "/api/v1/product/create-product",
+            productData
+        );
+        if (data?.success) {
             setName('')
             toast.success(`Product is created`)
             navigate('/dashboard/admin/products')
         } else {
-            toast.error(res?.message)
+            toast.error(data?.message)
         }
     }
 
@@ -62,7 +65,7 @@ const CreateProduct = () => {
     return (
         <Layout title={'Create Product'}>
             <div className='container-fluid m-3 p-3'>
-                <div className='row'>
+                <div className='row dashboard'>
                     <div className='col-md-3'>
                         <AdminMenu />
                     </div>
@@ -110,7 +113,10 @@ const CreateProduct = () => {
                                 value={name} 
                                 placeholder='Write a name' 
                                 className='form-control'
-                                onChange={(e) => setName(e.target.value)}
+                                onChange={(e) => {
+                                    setName(e.target.value)
+                                    console.log(name)
+                                    }}
                                 />
                             </div>
                             <div className="mb-3">
@@ -127,7 +133,7 @@ const CreateProduct = () => {
                             <div className="mb-3">
                                 <Input 
                                 title={'Price'}
-                                type="text" 
+                                type="number" 
                                 value={price} 
                                 placeholder='Write a price' 
                                 className='form-control'
@@ -137,7 +143,7 @@ const CreateProduct = () => {
                             <div className="mb-3">
                                 <Input 
                                 title={'Quantity'}
-                                type="text" 
+                                type="number" 
                                 value={quantity} 
                                 placeholder='Write a quantity' 
                                 className='form-control'

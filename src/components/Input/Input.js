@@ -1,6 +1,5 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './Input.css'
-import {EyeOutlined, EyeInvisibleOutlined} from '@ant-design/icons'
 
 const Input = ({title, value, required, onChange, type, placeholder, width}) => {
     return (

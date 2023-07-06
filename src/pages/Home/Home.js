@@ -1,12 +1,15 @@
 import React,{useState, useEffect} from 'react';
-import './Home.css'
-import { useNavigate } from 'react-router-dom';
+import '../../styles/HomeStyle.css'
+import { Link, useNavigate } from 'react-router-dom';
 import Layout from '../../Layout/Layout';
 import { productApi } from '../../http/Product';
 import { categoriesApi } from '../../http/Category';
 import Button from './../../components/Button/Button';
 import {Checkbox, Radio} from 'antd'
 import { Prices } from '../../components/Prices/Prices';
+import { useCart } from '../../context/cart';
+import { toast } from 'react-hot-toast';
+import Banner from '../../components/Banner/Banner';
 
 
 const Home = () => {
@@ -19,6 +22,7 @@ const Home = () => {
     const [loading, setLoading] = useState(false)
 
     const navigate = useNavigate()
+    const [cart, setCart] = useCart()
 
     //get all category
     const getAllCategory = async () => {
@@ -113,10 +117,13 @@ const Home = () => {
 
     return (
         <Layout title={'All products - Best offers'}>
-            <div className='container-fluid m-3 p-3'>
-                <div className="row mt-3">
-                    <div className="col-md-2">
-                        <h4 className='text-center'>Filter By Category</h4>
+            {/* banner image */}
+            {/* <Banner /> */}
+            {/* banner image */}
+            <div className='container-fluid m-3 p-3 home-page'>
+                <div className="row mt-3" style={{width: '100%'}}>
+                    <div className="col-md-3 filters">
+                        <h4 className='text-center mb-2 pb-2'>Filter By Category</h4>
                         <div className="d-flex flex-column">
                         {categories?.map((category)=> (
                             <Checkbox key={category._id} onChange={(e)=> handleFilter(e.target.checked, category._id)}>
@@ -125,7 +132,7 @@ const Home = () => {
                         ))}
                         </div>
                         {/* {Price filter} */}
-                        <h4 className='text-center mt-4'>Filter By Price</h4>
+                        <h4 className='text-center mb-2 pb-2'>Filter By Price</h4>
                         <div className="d-flex flex-column">
                             <Radio.Group onChange={(e)=>setRadio(e.target.value)}>
                                 {Prices?.map((price)=> (
@@ -141,40 +148,50 @@ const Home = () => {
                         onClick={()=>window.location.reload()}
                         >Reset filter</Button>
                     </div>
-                    <div className="col-md-10">
-                        <h1 className='text-center mb-2'>All products</h1>
+                    <div className="col-md-9">
+                        <h1 className='text-center'>All products</h1>
                         <div className="d-flex flex-wrap">
                             {products?.map(product => (
-                               <div className="card m-2" style={{width: '20rem'}}>
-                                    <img src={`http://localhost:8080/api/v1/product/product-photo/${product._id}`}
+                               <Link className="card m-2" style={{width: '20rem'}} key={product._id} >
+                                    <img src={`http://localhost:8080/api/v1/product/product-photo/${product._id}`} onClick={() => navigate(`/product/${product.slug}`)}
                                     className='card-img-top'
                                     alt={product.name} />
-                                    <div className='card-body'>
-                                        <h5 className='card-title'>
-                                            {product.name.substring(0, 50)}...
-                                        </h5>
+                                    <div className='card-body d-flex flex-column'>
+                                        <div className='card-name-price'>
+                                            <h5 className='card-title'>
+                                                {product.name.substring(0, 50)}...
+                                            </h5>
+                                            <p className='card-title card-price'>
+                                            {product.price.toLocaleString("en-US", {
+                                                style: "currency",
+                                                currency: "USD",
+                                            })}
+                                            </p>
+                                        </div>
                                         <p className='card-text'>
                                             {product.description.substring(0, 30)}...
                                         </p>
-                                        <p className='card-text'>
-                                           ${product.price}
-                                        </p>
-                                        <div className='btn-group'>
-                                            <Button className='btn-detail' onClick={() => navigate(`/product/${product.slug}`)}>More Details</Button>
-                                            <Button className='btn-add-to-cart ms-1'>ADD TO CART</Button>
+                                        <div className='card-name-price'>
+                                            <Button className='btn-detail btn-info' onClick={() => navigate(`/product/${product.slug}`)}>More Details</Button>
+                                            <Button 
+                                            className='btn-add-to-cart btn-dark ms-1'
+                                            onClick={()=> {
+                                                toast.success('Item added to cart')
+                                                localStorage.setItem('cart', JSON.stringify([...cart, product]))
+                                                setCart([...cart, product])}}>ADD TO CART</Button>
                                         </div>
                                     </div>
-                               </div>
+                               </Link>
 
                             ))}
                         </div>
-                        <div className='m-2 p-3'>
+                        <div className='m-2 p-3 text-center'>
                             {products && products.length < total && (
-                                <Button className={'btn-warning'} onClick={(e) => {
+                                <Button className={'loadmore'} onClick={(e) => {
                                     e.preventDefault();
                                     setPage(page + 1)
                                 }}>
-                                    {loading ? "Loading..." : 'Loadmore'}
+                                    {loading ? "LOADING..." : 'VIEW MORE'}
                                 </Button>
                             )}
                         </div>

@@ -29,6 +29,13 @@ const Auth = {
         if (response.data) {
             return response.data
         }
+    },
+
+    updateProfile: async(url, params) => {
+        const response = await axiosClient.put(url, params)
+        if (response.data) {
+            return response.data
+        }
     }
 }
 

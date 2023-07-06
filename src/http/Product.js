@@ -100,5 +100,16 @@ export const productApi = {
         } catch (error) {
             console.log(error)
         }
+    },
+
+    getProductByCategory: async(url) => {
+        try {
+            const response = await axiosClient.get(url)
+            if (response.data) {
+                return response.data
+            }
+        } catch (error) {
+            console.log(error)
+        }
     }
 }
