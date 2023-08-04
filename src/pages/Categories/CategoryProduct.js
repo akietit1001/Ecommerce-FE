@@ -35,10 +35,12 @@ const CategoryProduct = () => {
                             <h1 className='text-center mb-2'>All products</h1>
                             <div className="d-flex flex-wrap">
                                 {products?.map(product => (
-                                <div className="card m-2" style={{width: '20rem'}} key={product._id} onClick={() => navigate(`/product/${product.slug}`)}>
+                                <div className="card m-2" style={{width: '20rem'}} key={product._id}>
                                         <img src={`http://localhost:8080/api/v1/product/product-photo/${product._id}`}
                                         className='card-img-top'
-                                        alt={product.name} />
+                                        alt={product.name} 
+                                        onClick={() => navigate(`/product/${product.slug}`)}
+                                        />
                                         <div className='card-body d-flex flex-column'>
                                             <div className='card-name-price'>
                                                 <h5 className='card-title'>

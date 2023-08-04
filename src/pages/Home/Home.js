@@ -152,7 +152,7 @@ const Home = () => {
                         <h1 className='text-center'>All products</h1>
                         <div className="d-flex flex-wrap">
                             {products?.map(product => (
-                               <Link className="card m-2" style={{width: '20rem'}} key={product._id} >
+                               <div className="card m-2" style={{width: '20rem'}} key={product._id} >
                                     <img src={`http://localhost:8080/api/v1/product/product-photo/${product._id}`} onClick={() => navigate(`/product/${product.slug}`)}
                                     className='card-img-top'
                                     alt={product.name} />
@@ -181,7 +181,7 @@ const Home = () => {
                                                 setCart([...cart, product])}}>ADD TO CART</Button>
                                         </div>
                                     </div>
-                               </Link>
+                               </div>
 
                             ))}
                         </div>

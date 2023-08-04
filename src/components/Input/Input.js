@@ -18,9 +18,4 @@ const Input = ({title, value, required, onChange, type, placeholder, width}) => 
     );
 }
 
-Input.defaultValue = {
-    required: false,
-    type: ['text', 'password']
-}
-
 export default Input;

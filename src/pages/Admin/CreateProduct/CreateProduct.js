@@ -113,10 +113,7 @@ const CreateProduct = () => {
                                 value={name} 
                                 placeholder='Write a name' 
                                 className='form-control'
-                                onChange={(e) => {
-                                    setName(e.target.value)
-                                    console.log(name)
-                                    }}
+                                onChange={(e) => {setName(e.target.value)}}
                                 />
                             </div>
                             <div className="mb-3">

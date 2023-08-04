@@ -1,5 +1,4 @@
 import { useState, useEffect} from 'react'
-import { categoriesApi } from '../http/Category'
 import axiosClient from './../http/AxiosClient';
 
 

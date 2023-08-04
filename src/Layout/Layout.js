@@ -12,7 +12,7 @@ const Layout = ({children, title, description, keywords, author}) => {
     const scrollToTop = () => {
         window.scrollTo({
             top: 0,
-            behavior: "smooth" // Tùy chọn "smooth" sẽ tạo hiệu ứng cuộn mượt
+            behavior: 'smooth'
         });
     }
 
